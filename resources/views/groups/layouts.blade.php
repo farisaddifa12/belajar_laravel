@@ -128,9 +128,9 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="mapels">              
+            <a class="nav-link" href="#">              
               <i class="fa-solid fa-user"></i>
-              Jadwal Mapel dan Guru
+              Jadwal Mapel dan Absensi
             </a>
           </li>
         </ul>
