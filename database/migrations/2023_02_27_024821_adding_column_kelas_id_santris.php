@@ -12,15 +12,13 @@ return new class extends Migration
      * @return void
      */
     public function up()
-    {
-        Schema::create('santris', function (Blueprint $table) {
-            $table->id();
-            $table->string('image');
-            $table->string('title');
-            $table->text('content');
-            $table->timestamps();
-        });
-    }
+{
+    Schema::table('santris', function (Blueprint $table) {
+        $table->biginteger('id_kelas')->after('content');
+        $table->foreign('id_kelas')->references('id')->on('mapels')->onDelete('cascade');
+
+    });
+}
 
 
     /**

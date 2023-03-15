@@ -17,14 +17,42 @@ class AbsensiController extends Controller
     {
         $request->validate([
             'nama' => 'required',
-            'keterangan' => 'required',
             'kehadiran' => 'required',
+            'keterangan' => 'required',
         ]);
 
         Absensi::create($request->all());
 
         return redirect('/absensis')->with('success', 'Data absensi berhasil disimpan.');
+    }public function absensi_store(Request $request)
+    {
+        $inputs = $request->input('absensi');
+        $rules = [
+            'absensi.*.nama' => 'required',
+            'absensi.*.kehadiran' => 'required',
+            'absensi.*.keterangan' => 'required',
+        ];
+        $this->validate($request, $rules);
+
+        foreach ($inputs as $input) {
+            try {
+                Absensi::create([
+                    'id' => $input['id'],
+                    'nama' => $input['nama'],
+                    'kehadiran' => $input['kehadiran'],
+                    'keterangan' => $input['keterangan']
+                ]);
+            } catch (\Exception $e) {
+                // Handle the exception here
+            }
+        }
+
+        return redirect()->route('absensis')->with(['success' => 'Data Berhasil Disimpan!']);
     }
+}
+
+
+
     //   /**
     //  * create
     //  *
@@ -45,21 +73,13 @@ class AbsensiController extends Controller
     // {
     //     //validate form
     //     $this->validate($request, [
-    //         'nama' => 'required|min:5',
-    //         'kehadiran' => 'required|min:10',
-    //         'keterangan' => 'required|min:10',
+    //         'nama' => 'required',
+    //         'kehadiran' => 'required',
+    //         'keterangan' => 'required,
 
-    //     ]);
-
-
-    //     //create post
-    //     Post::create([
-    //         'nama' => $request->name,
-    //         'kehadiran' => $request->email,
-    //         'keterangan' => $request->phone,
     //     ]);
 
     //     //redirect to index
     //     return redirect()->route('absensis.index')->with(['success' => 'Data Berhasil Disimpan!']);
     // }
-}
+

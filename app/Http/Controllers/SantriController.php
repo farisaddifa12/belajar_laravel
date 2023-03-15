@@ -43,7 +43,8 @@ class SantriController extends Controller
         $this->validate($request, [
             'image'     => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'title'     => 'required|min:5',
-            'content'   => 'required|min:10'
+            'content'   => 'required|min:10',
+            'id_kelas'   => 'required'
         ]);
 
         //upload image
@@ -54,7 +55,8 @@ class SantriController extends Controller
         Santri::create([
             'image'     => $image->hashName(),
             'title'     => $request->title,
-            'content'   => $request->content
+            'content'   => $request->content,
+            'id_kelas'   => $request->id_kelas
         ]);
 
         //redirect to index

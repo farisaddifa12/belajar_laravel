@@ -22,10 +22,11 @@
                         <table class="table table-bordered">
                             <thead>
                               <tr>
-                                <th scope="col">FOTO</th>
-                                <th scope="col">NAMA</th>
-                                <th scope="col">ASAL</th>
-                                <th scope="col">AKSI</th>
+                                <th scope="col">foto</th>
+                                <th scope="col">nama</th>
+                                <th scope="col">asal</th>
+                                <th scope="col">id_kelas</th>
+                                <th scope="col">menu</th>
                               </tr>
                             </thead>
                             <tbody>
@@ -36,6 +37,7 @@
                                     </td>
                                     <td>{{ $santri->title }}</td>
                                     <td>{!! $santri->content !!}</td>
+                                    <td>{!! $santri->id_kelas !!}</td>
                                     <td class="text-center">
                                         <form onsubmit="return confirm('Apakah Anda Yakin ?');" action="{{ route('santris.destroy', $santri->id) }}" method="POST">
                                             <a href="{{ route('santris.edit', $santri->id) }}" class="btn btn-sm btn-primary">EDIT</a>

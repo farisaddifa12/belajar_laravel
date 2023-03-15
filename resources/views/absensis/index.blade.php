@@ -9,8 +9,9 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
 </head>
-
+@extends('mapels.layouts')
 <body style="background: white">
+@section ('content')
     <h1>Form Absensi</h1>
 
     <div class="table-responsive">
@@ -25,21 +26,22 @@
                 </tr>
             </thead>
             <tbody>
+                <form action="" method="POST">
             @foreach ($absensis as $absensi)
                 <tr class="table-info">
                     <td>
-                        <label class="" for="inlineFormInputName2">1</label>
+                        <label class="" name="id" for="inlineFormInputName2">{{ $absensi->id }}</label>
                     </td>
                     <td>
-                        <label class="" for="inlineFormInputGroupUsername2">{{ $absensi->title }}</label>
+                        <label class="" name="nama" for="inlineFormInputGroupUsername2">{{ $absensi->title }}</label>
                     </td>
                     <td>
-                        <label type="" autocomplete="off" name="" class="">
+                        <label class="" name="id_kelas" for="inlineFormInputGroupUsername3">{{ $absensi->id_kelas }}</label>
                     </td>
                     <td class="text-center">
                         <div class="row">
                             <div class="d-flex justify-content-center">
-                                <input type="hidden" name="" value="">
+                                <input type="hidden" name="kehadiran" value="">
                                 <input type="hidden" name="idmahasantri[]" value="51">
                                 <div class="custom-control custom-radio custom-control-inline">
                                     <input type="radio" id="customRadioInline1151" name="absensi0"
@@ -67,11 +69,15 @@
                         </div>
                     </td>
                     <td>
-                        <input type="text" autocomplete="off" name="keterangan0" class="form-control ">
+                        <input type="text" autocomplete="off" name="keterangan" class="form-control ">
                     </td>
                 </tr>
                 </tr>
                 @endforeach
+                </form>
             </tbody>
         </table>
+        <div class="tenor-gif-embed" data-postid="25351062" data-share-method="host" data-aspect-ratio="1.33333" data-width="50%"><a href="https://tenor.com/view/darimana-duitnya-darimana-duitnya-money-uang-gif-25351062">Darimana Duitnya GIF</a>from <a href="https://tenor.com/search/darimana-gifs">Darimana GIFs</a></div> <script type="text/javascript" async src="https://tenor.com/embed.js"></script>
+        <button type="submit" class="btn btn-sm btn-primary">Submit</button>
     </div>
+    @endsection

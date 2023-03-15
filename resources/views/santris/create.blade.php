@@ -53,6 +53,20 @@
                                     </div>
                                 @enderror
                             </div>
+                            <div class="form-group">
+                                <label class="font-weight-bold">Kelas</label>
+                                <select type="select" class="form-select @error('id_kelas') is-invalid @enderror" name="id_kelas" value="{{ old('id_kelas') }}" placeholder="Masukkan Judul Post">
+                                    <option value="1">Kelas Programmer</option>
+                                    <option value="2">Kelas Inggris</option>
+                                    <option value="3">Kelas Gaming</option>
+                                </select>
+                                <!-- error message untuk title -->
+                                @error('id_kelas')
+                                    <div class="alert alert-danger mt-2">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
+                            </div>
 
                             <button type="submit" class="btn btn-md btn-primary">SIMPAN</button>
                             <button type="reset" class="btn btn-md btn-warning">RESET</button>

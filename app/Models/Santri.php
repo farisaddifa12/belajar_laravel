@@ -18,5 +18,6 @@ class Santri extends Model
         'image',
         'title',
         'content',
+        'id_kelas',
     ];
 }
